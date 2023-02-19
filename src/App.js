@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 
 //adding the cards
@@ -11,6 +12,10 @@ const cardImages = [
 ]
 
 function App() {
+  const [cards, setCards] = useState([])
+  const [turns, setTurns] = useState(0)
+
+
 
   //shuffle cards 
   const shuffleCards = () => {
@@ -20,13 +25,17 @@ function App() {
       .sort(() => Math.random() - 0.5)
       //mapping cards and giving them an id
       .map((card) => ({...card, id:Math.random() }))
+
+      //set value of cards and turns
+      setCards(shuffleCards)
+      setTurns(0)
   }
 
 
   return (
     <div className="App">
       <h1>Magic Match</h1>
-      <button>New Game</button>
+      <button onClick={shuffleCards}>New Game</button>
     </div>
   );
 }
