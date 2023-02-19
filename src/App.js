@@ -38,7 +38,7 @@ function App() {
       <button onClick={shuffleCards}>New Game</button>
 
       
-      <div className="card-grid"></div>
+      <div className="card-grid">
       {cards.map(card => 
         <div className='card' key={card.id}>
           <div>
@@ -46,6 +46,7 @@ function App() {
             <img className='back' src="/img/cover.jpg" alt="card back" />
           </div>
         </div> )}
+    </div>
     </div>
   );
 }
