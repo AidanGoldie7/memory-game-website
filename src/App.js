@@ -3,12 +3,12 @@ import './App.css'
 
 //adding the cards
 const cardImages = [
-  { "src": "img/croc.avif"},
-  { "src": "img/elephant.avif"},
-  { "src": "img/monkey.avif"},
-  { "src": "img/sloth.avif"},
-  { "src": "img/snake.avif"},
-  { "src": "img/tiger.avif"}
+  { "src": "img/croc.jpg"},
+  { "src": "img/elephant.jpg"},
+  { "src": "img/monkey.jpg"},
+  { "src": "img/sloth.jpg"},
+  { "src": "img/snake.jpg"},
+  { "src": "img/tiger.jpg"}
 ]
 
 function App() {
@@ -36,6 +36,16 @@ function App() {
     <div className="App">
       <h1>Magic Match</h1>
       <button onClick={shuffleCards}>New Game</button>
+
+      
+      <div className="card-grid"></div>
+      {cards.map(card => 
+        <div className='card' key={card.id}>
+          <div>
+            <img className="front" src={card.src} alt="card front"/>
+            <img className='back' src="/img/cover.jpg" alt="card back" />
+          </div>
+        </div> )}
     </div>
   );
 }
