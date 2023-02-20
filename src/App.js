@@ -4,12 +4,12 @@ import SingleCard from './components/SingleCard'
 
 //adding the cards
 const cardImages = [
-  { "src": "img/croc.jpg"},
-  { "src": "img/elephant.jpg"},
-  { "src": "img/monkey.jpg"},
-  { "src": "img/sloth.jpg"},
-  { "src": "img/snake.jpg"},
-  { "src": "img/tiger.jpg"}
+  { "src": "img/croc.jpg", matched : false},
+  { "src": "img/elephant.jpg", matched : false},
+  { "src": "img/monkey.jpg", matched : false},
+  { "src": "img/sloth.jpg", matched : false},
+  { "src": "img/snake.jpg", matched : false},
+  { "src": "img/tiger.jpg", matched : false}
 ]
 
 function App() {
@@ -47,15 +47,24 @@ function App() {
     if (choiceOne && choiceTwo){
       
       if(choiceOne.src === choiceTwo.src) {
-        console.log('those cards match')
+        setCards(prevCards => {
+          return prevCards.map(card => {
+            if (card.src === choiceOne.src){
+            return{...card, matched: true}
+            } else {
+              return card
+            }
+          })
+        })
         resetTurn()
       } 
       else {
-        console.log('do not match')
         resetTurn()
       }
     }
   }, [choiceOne, choiceTwo])
+
+  console.log(cards)
 
 
 
