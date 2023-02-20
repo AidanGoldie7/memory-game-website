@@ -31,6 +31,10 @@ function App() {
       //mapping cards and giving them an id
       .map((card) => ({...card, id:Math.random() }))
 
+      //reset values
+      setChoiceOne(null)
+      setChoiceTwo(null)
+
       //set value of cards and turns
       setCards(shuffleCards)
       setTurns(0)
@@ -79,9 +83,15 @@ function App() {
   }
 
 
+  //start a new game automatically 
+    useEffect(() => {
+      shuffleCards()
+    }, [])
+
+
   return (
     <div className="App">
-      <h1>Magic Match</h1>
+      <h1>Animal Match</h1>
       <button onClick={shuffleCards}>New Game</button>
 
       
@@ -96,6 +106,7 @@ function App() {
           /> 
         ))}
     </div>
+    <p>Turns : {turns}</p>
     </div>
   );
 }
